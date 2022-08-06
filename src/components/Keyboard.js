@@ -67,16 +67,16 @@ const Keyboard = () => {
       <div className='keyboard' onKeyDown={handleKeyboard}>
          <div className='line1'>
             {line1Keys.map((key) => (
-               <Key keyVal={key.letter} disabled={disabledLetters.includes(key.letter)} />
+               <Key key={key.letter} keyVal={key.letter} disabled={disabledLetters.includes(key.letter)} />
             ))}
          </div>
          <div className='line2'>
             {line2Keys.map((key) => (
-               <Key keyVal={key.letter} disabled={disabledLetters.includes(key.letter)} />
+               <Key key={key.letter} keyVal={key.letter} disabled={disabledLetters.includes(key.letter)} />
             ))}</div>
          <div className='line3'>
             {line3Keys.map((key) => (
-               <Key keyVal={key.letter} big={key.type === 'large' ? true : false} disabled={disabledLetters.includes(key.letter)} />
+               <Key key={key.letter} keyVal={key.letter} big={key.type === 'large' ? true : false} disabled={disabledLetters.includes(key.letter)} />
             ))}</div>
       </div>
    )

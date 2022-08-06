@@ -5,9 +5,9 @@ const Board = () => {
    return (
       <div className="board">
          {Array.from(Array(6).keys()).map(attempt => (
-            <div className="row">
+            <div key={`row-${attempt}`} className="row">
                {Array.from(Array(5).keys()).map(position => (
-                  <Letter letterPosition={position} attemptValue={attempt} />
+                  <Letter key={`row-${attempt}-${position}`} letterPosition={position} attemptValue={attempt} />
                ))
                }
             </div>

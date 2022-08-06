@@ -17,7 +17,7 @@ const Letter = ({ letterPosition, attemptValue }) => {
    }, [currAttempt.attempt])
 
    return (
-      <div id={letterState} className="letter">{letter}</div>
+      <div id={letterState ? letterState : 'neutral'} className="letter">{letter}</div>
    )
 }
 
