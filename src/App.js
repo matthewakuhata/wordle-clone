@@ -32,11 +32,17 @@ function App() {
     setCurrAttempt({ ...currAttempt, position: currAttempt.position + 1 })
   }
 
-  const submitGuess = () => {
+  const submitGuess = async () => {
     if (currAttempt.position !== 5) return;
 
     const currentWord = [...board[currAttempt.attempt]].join('').toLowerCase();
-    if (isValidWord(currentWord)) {
+
+    const result = await axois.get(`https://api.api-ninjas.com/v1/dictionary?word=${currentWord}`, {
+      headers:
+        { 'X-Api-Key': '1IzsQ9vc7YFZwCT1o+Q8lA==CJAvzKDE4XQqBWgY' },
+    }).then(result => result.data);
+
+    if (result.valid) {
       setCurrAttempt({ attempt: currAttempt.attempt + 1, position: 0 });
     } else {
       alert("word not found");
