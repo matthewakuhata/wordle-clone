@@ -2,9 +2,10 @@ import { useState, createContext, useEffect } from 'react';
 import axois from 'axios';
 
 const isValidWord = (word) => {
+   console.log(process.env); return false;
    axois.get(`https://api.api-ninjas.com/v1/dictionary?word=${word}`, {
       headers:
-         { 'X-Api-Key': process.env.API_KEY },
+         { 'X-Api-Key': process.env.RAZZLE_API_KEY },
    }).then(result => result.valid);
 };
 
