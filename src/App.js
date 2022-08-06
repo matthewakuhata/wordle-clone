@@ -4,7 +4,6 @@ import Board from './components/Board';
 import GameOver from './components/GameOver';
 import { boardDefault, generateWordSet } from './Words';
 import axois from 'axios';
-import isValidWord from './utils/isValidWord';
 import './App.css';
 
 export const AppContext = createContext();
