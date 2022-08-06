@@ -3,10 +3,10 @@ import wordBank from "./wordle-bank.txt";
 export const boardDefault = [
    ["", "", "", "", ""],
    ["", "", "", "", ""],
-   ["", "", "r", "g", ""],
    ["", "", "", "", ""],
    ["", "", "", "", ""],
-   ["m", "", "", "", ""],
+   ["", "", "", "", ""],
+   ["", "", "", "", ""],
 ];
 
 export const generateWordSet = async () => {

@@ -3,6 +3,8 @@ import Keyboard from './components/Keyboard';
 import Board from './components/Board';
 import GameOver from './components/GameOver';
 import { boardDefault, generateWordSet } from './Words';
+import axois from 'axios';
+import isValidWord from './utils/isValidWord';
 import './App.css';
 
 export const AppContext = createContext();
@@ -10,16 +12,14 @@ export const AppContext = createContext();
 function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, position: 0 });
-  const [wordSet, setWordSet] = useState(new Set());
   const [correctWord, setCorrectWord] = useState('');
   const [disabledLetters, setDisabledLetters] = useState([]);
   const [gameOver, setGameOver] = useState({ gameOver: false, guessedCorrect: false })
 
   useEffect(() => {
     generateWordSet().then((words) => {
-      setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord);
-    })
+    });
   }, []);
 
   const onSelectKey = (keyVal) => {
@@ -36,9 +36,7 @@ function App() {
     if (currAttempt.position !== 5) return;
 
     const currentWord = [...board[currAttempt.attempt]].join('').toLowerCase();
-    console.log(wordSet)
-    console.log(correctWord);
-    if (wordSet.has(currentWord)) {
+    if (isValidWord(currentWord)) {
       setCurrAttempt({ attempt: currAttempt.attempt + 1, position: 0 });
     } else {
       alert("word not found");
@@ -73,7 +71,6 @@ function App() {
         onSelectKey,
         submitGuess,
         deleteLetter,
-        wordSet,
         correctWord,
         disabledLetters,
         setDisabledLetters,
