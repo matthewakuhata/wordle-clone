@@ -64,18 +64,6 @@ nav h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#correct {
-  background-color: #528d4e;
-}
-
-#almost {
-  background-color: #b49f39;
-}
-
-#error {
-  background-color: #3a393c;
-}
-
 .keyboard {
   width: 700px;
   height: 300px;
@@ -113,15 +101,27 @@ nav h1 {
   display: grid;
   place-items: center;
   font-size: 20px;
-  background-color: grey;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
 }
 
-#big {
-  width: 100px;
+.neutral {
+  background-color: grey;
 }
-#disabled {
+
+.correct {
+  background-color: #528d4e;
+}
+
+.almost {
+  background-color: #b49f39;
+}
+
+.error {
   background-color: #3a393c;
+}
+
+.big {
+  width: 100px;
 }

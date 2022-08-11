@@ -12,7 +12,7 @@ function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, position: 0 });
   const [correctWord, setCorrectWord] = useState('');
-  const [disabledLetters, setDisabledLetters] = useState([]);
+  const [guessedLetters, setGuessedLetters] = useState({});
   const [gameOver, setGameOver] = useState({ gameOver: false, guessedCorrect: false })
 
   useEffect(() => {
@@ -21,64 +21,17 @@ function App() {
     });
   }, []);
 
-  const onSelectKey = (keyVal) => {
-    if (currAttempt.position > 4) return;
-
-    const newBoard = [...board];
-    newBoard[currAttempt.attempt][currAttempt.position] = keyVal;
-
-    setBoard(newBoard);
-    setCurrAttempt({ ...currAttempt, position: currAttempt.position + 1 })
-  }
-
-  const submitGuess = async () => {
-    if (currAttempt.position !== 5) return;
-
-    const currentWord = [...board[currAttempt.attempt]].join('').toLowerCase();
-
-    const result = await axois.get(`https://api.api-ninjas.com/v1/dictionary?word=${currentWord}`, {
-      headers:
-        { 'X-Api-Key': '1IzsQ9vc7YFZwCT1o+Q8lA==CJAvzKDE4XQqBWgY' },
-    }).then(result => result.data);
-
-    if (result.valid) {
-      setCurrAttempt({ attempt: currAttempt.attempt + 1, position: 0 });
-    } else {
-      alert("word not found");
-    }
-
-    if (currentWord === correctWord) {
-      setGameOver({ gameOver: true, guessedCorrect: true });
-    }
-
-    if (currAttempt.attempt === 5) {
-      setGameOver({ gameOver: true, guessedCorrect: false });
-    }
-  };
-
-  const deleteLetter = () => {
-    if (currAttempt.position === 0) return;
-    const newBoard = [...board];
-    newBoard[currAttempt.attempt][currAttempt.position - 1] = '';
-
-    setBoard(newBoard);
-    setCurrAttempt({ ...currAttempt, position: currAttempt.position - 1 })
-  };
-
   return (
     <div className="App">
       <nav><h1>Wordle</h1></nav>
       <AppContext.Provider value={{
         board,
         setBoard,
-        currAttempt,
         setCurrAttempt,
-        onSelectKey,
-        submitGuess,
-        deleteLetter,
+        currAttempt,
         correctWord,
-        disabledLetters,
-        setDisabledLetters,
+        guessedLetters,
+        setGuessedLetters,
         gameOver,
         setGameOver
       }}>

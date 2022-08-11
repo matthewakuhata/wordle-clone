@@ -1,21 +1,21 @@
 import { React, useContext } from 'react'
 import { AppContext } from '../App';
 
-const Key = ({ keyVal, big = false, disabled }) => {
-   const { onSelectKey, submitGuess, deleteLetter } = useContext(AppContext);
+const Key = ({ keyVal, big = false, onSelectKey, onSubmitGuess, onDeleteLetter, state = 'neutral' }) => {
+   const { currAttempt, board, correctWord } = useContext(AppContext);
 
-   const selectKey = () => {
+   const onClickKey = () => {
       if (keyVal === 'ENTER') {
-         submitGuess()
+         onSubmitGuess()
       } else if (keyVal === 'DELETE') {
-         deleteLetter()
+         onDeleteLetter()
       } else {
          onSelectKey(keyVal);
       }
    }
 
    return (
-      <div id={big ? 'big' : disabled && 'disabled'} className="key" onClick={selectKey}>
+      <div className={`${state} key ${big && 'big'}`} onClick={onClickKey}>
          {keyVal}
       </div>
    )
