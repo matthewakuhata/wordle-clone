@@ -2,7 +2,6 @@ import { React, useContext } from 'react'
 import { AppContext } from '../App';
 
 const Key = ({ keyVal, big = false, onSelectKey, onSubmitGuess, onDeleteLetter, state = 'neutral' }) => {
-   const { currAttempt, board, correctWord } = useContext(AppContext);
 
    const onClickKey = () => {
       if (keyVal === 'ENTER') {
@@ -21,4 +20,4 @@ const Key = ({ keyVal, big = false, onSelectKey, onSubmitGuess, onDeleteLetter, 
    )
 }
 
-export default Key
+export default Key;

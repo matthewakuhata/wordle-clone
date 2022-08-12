@@ -56,12 +56,13 @@ const Keyboard = () => {
 
       const currentWord = [...board[currAttempt.attempt]].join('').toLowerCase();
 
-      const result = await axois.get(`https://api.api-ninjas.com/v1/dictionary?word=${currentWord}`, {
+      const data = await axois.get(`https://api.api-ninjas.com/v1/dictionary?word=${currentWord}`, {
          headers:
             { 'X-Api-Key': '1IzsQ9vc7YFZwCT1o+Q8lA==CJAvzKDE4XQqBWgY' },
-      }).then(result => result.data);
-
-      if (result.valid) {
+         contentType: 'application/json',
+      }).then(res => res.data);
+      console.log(data)
+      if (data.valid) {
          setCurrAttempt({ attempt: currAttempt.attempt + 1, position: 0 });
       } else {
          return alert("word not found");

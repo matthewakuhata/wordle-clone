@@ -20,8 +20,12 @@ const Letter = ({ letterPosition, attemptValue }) => {
       }
    }, [currAttempt.attempt]);
 
+   const calculateDelay = () => {
+      const value = letterPosition * 3;
+      return `${(value / 10)}s`;
+   }
    return (
-      <div className={`letter ${letterState}`}>{letter}</div>
+      <div className={`letter ${letterState && 'flip-horizontal-top'}`} style={{ '--bg-color': `var(--${letterState})`, '--delay': calculateDelay() }}>{letter}</div>
    )
 }
 
