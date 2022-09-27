@@ -1,8 +1,6 @@
-import { React, useContext } from 'react'
-import { AppContext } from '../App';
+import { React } from 'react'
 
 const Key = ({ keyVal, big = false, onSelectKey, onSubmitGuess, onDeleteLetter, state = 'neutral' }) => {
-
    const onClickKey = () => {
       if (keyVal === 'ENTER') {
          onSubmitGuess()
