@@ -1,46 +1,12 @@
 import React, { useEffect, useCallback, useContext } from "react";
+
 import { AppContext } from "../App";
-import axois from "axios";
 import Key from "./Key";
+import {keys} from '../constants/keys';
+
+import axois from "axios";
 
 const Keyboard = () => {
-  const keys = [
-    [
-      { type: "key", letter: "Q" },
-      { type: "key", letter: "W" },
-      { type: "key", letter: "E" },
-      { type: "key", letter: "R" },
-      { type: "key", letter: "T" },
-      { type: "key", letter: "Y" },
-      { type: "key", letter: "U" },
-      { type: "key", letter: "I" },
-      { type: "key", letter: "O" },
-      { type: "key", letter: "P" },
-    ],
-    [
-      { type: "key", letter: "A" },
-      { type: "key", letter: "S" },
-      { type: "key", letter: "D" },
-      { type: "key", letter: "F" },
-      { type: "key", letter: "G" },
-      { type: "key", letter: "H" },
-      { type: "key", letter: "J" },
-      { type: "key", letter: "K" },
-      { type: "key", letter: "L" },
-    ],
-    [
-      { type: "large", letter: "ENTER" },
-      { type: "key", letter: "Z" },
-      { type: "key", letter: "X" },
-      { type: "key", letter: "C" },
-      { type: "key", letter: "V" },
-      { type: "key", letter: "B" },
-      { type: "key", letter: "N" },
-      { type: "key", letter: "M" },
-      { type: "large", letter: "DELETE" },
-    ],
-  ];
-
   const {
     currAttempt,
     guessedLetters,

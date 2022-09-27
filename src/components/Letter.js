@@ -7,7 +7,6 @@ const Letter = ({ letterPosition, attemptValue }) => {
 
    const correct = correctWord[letterPosition] === letter.toLowerCase();
    const almost = !correct && letter !== '' && correctWord.includes(letter.toLowerCase());
-
    const letterState = currAttempt.attempt > attemptValue && (correct ? "correct" : almost ? "almost" : "error");
 
    useEffect(() => {
@@ -18,7 +17,7 @@ const Letter = ({ letterPosition, attemptValue }) => {
             return state;
          });
       }
-   }, [currAttempt.attempt]);
+   }, [letter, letterState, setGuessedLetters]);
 
    const calculateDelay = () => {
       const value = letterPosition * 3;

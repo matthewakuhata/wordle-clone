@@ -1,38 +1,13 @@
 import Keyboard from "../Keyboard";
 import { AppContext } from "../../App";
+import { keys as reduceMe } from '../../constants/keys'
 
 import axios from 'axios';
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-const keys = [
-  "Q",
-  "W",
-  "E",
-  "R",
-  "T",
-  "Y",
-  "U",
-  "I",
-  "O",
-  "P",
-  "A",
-  "S",
-  "D",
-  "F",
-  "G",
-  "H",
-  "J",
-  "K",
-  "L",
-  "ENTER",
-  "Z",
-  "X",
-  "C",
-  "V",
-  "B",
-  "N",
-  "M",
-  "DELETE",
-];
+
+const keys = reduceMe.reduce((acc, row) => {
+  return [...acc, ...row.map(({letter}) => letter)];
+}, []);
 
 jest.mock("axios");
 
