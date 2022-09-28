@@ -52,7 +52,8 @@ const Keyboard = () => {
     } else if (currAttempt.attempt === 5) {
       setGameOver({ gameOver: true, guessedCorrect: false });
     }
-  }, [board, correctWord, currAttempt, setCurrAttempt, setGameOver]);
+  }, [board, correctWord, currAttempt, setCurrAttempt, setGameOver]
+  );
 
   const deleteLetter = useCallback(() => {
     if (currAttempt.position === 0) return;
@@ -62,7 +63,8 @@ const Keyboard = () => {
 
     setBoard(newBoard);
     setCurrAttempt({ ...currAttempt, position: currAttempt.position - 1 });
-  }, [board, currAttempt, setBoard, setCurrAttempt]);
+  }, [board, currAttempt, setBoard, setCurrAttempt]
+  );
 
   const handleKeyboard = useCallback(
     (event) => {

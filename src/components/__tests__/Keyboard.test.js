@@ -40,7 +40,7 @@ describe("GIVEN a Keyboard", () => {
   });
 });
 
-describe("GIVEN a Keyboard on attemp 0 and position 0", () => {
+describe("GIVEN a Keyboard on attempt 0 and position 0", () => {
   let mockCurrAttempt = { attempt: 0, position: 0 };
   let mockBoard = [[]];
   const mockSetCurrAttempt = jest.fn((newVal) => mockCurrAttempt = newVal);
@@ -262,7 +262,7 @@ describe("GIVEN a Keyboard with the attempt at the final postion", () => {
       await waitFor(() => expect(mockSetCurrAttempt).toHaveBeenCalledTimes(1));
       expect(mockSetGameOver).toBeCalledWith({ gameOver: true, guessedCorrect: true });
     });
-  });  
+  });
 });
 
 describe("GIVEN a Keyboard on the final attempt", () => {
