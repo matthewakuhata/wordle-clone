@@ -56,6 +56,7 @@ const Keyboard = () => {
 
   const deleteLetter = useCallback(() => {
     if (currAttempt.position === 0) return;
+  
     const newBoard = [...board];
     newBoard[currAttempt.attempt][currAttempt.position - 1] = "";
 

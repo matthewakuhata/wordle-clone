@@ -17,7 +17,7 @@ const Letter = ({ letterPosition, attemptValue }) => {
             return state;
          });
       }
-   }, [letter, letterState, setGuessedLetters]);
+   }, [currAttempt.attempt]);
 
    const calculateDelay = () => {
       const value = letterPosition * 3;

@@ -2,7 +2,7 @@ import { useState, createContext, useEffect } from 'react';
 import Keyboard from './components/Keyboard';
 import Board from './components/Board';
 import GameOver from './components/GameOver';
-import { boardDefault, generateWordSet } from './Words';
+import { boardDefault, generateWordSet } from './utils/Words';
 import './App.css';
 
 export const AppContext = createContext();
